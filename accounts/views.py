@@ -12,6 +12,4 @@ class SignupPageView(generic.CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         print("As object: ", context)
-        # print("As dict: ", context.__dict__)
-        print(context["view"].__dict__)
         return context

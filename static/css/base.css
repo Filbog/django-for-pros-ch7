@@ -1,0 +1,13 @@
+h1{
+    color: red;
+}
+
+/* for all the page content to be under the navbar */
+.main-container{
+    margin-top: 60px;
+}
+
+.bookcover {
+    height: 300px;
+    width: auto;
+}

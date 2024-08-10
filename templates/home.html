@@ -1,21 +1,18 @@
 {% extends "_base.html" %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 
 {% block content %}
 <h1>This is our home page.</h1>
+<img src="{% static 'images/flower.webp' %}" alt="" class="bookcover">
 
 {% if user.is_authenticated %}
 <p>Hi {{ user.username }}!</p>
 {{ user.groups }}
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Log out</button>
-</form>
+
 {% else %}
 <p>Not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
-<a href="{% url 'signup' %}">Sign Up</a>
 {% endif %}
 
 {% endblock content %}
