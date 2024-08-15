@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     # Third-party
     "crispy_forms",
     "crispy_bootstrap5",
+    # allauth stuff
     "allauth",
     "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.github",
     # my apps
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
@@ -155,14 +158,29 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # django-allauth config
-SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+SITE_ID = 2
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+# For social accounts
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     "github": {
+#         "APP": {
+#             "client_id": "123",
+#             "secret": "456",
+#         }
+#     }
+# }
