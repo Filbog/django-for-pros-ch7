@@ -2,6 +2,11 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse, resolve
 
+from unittest.mock import patch
+
+from allauth.socialaccount.models import SocialApp
+from django.contrib.sites.models import Site
+
 
 # Create your tests here.
 
@@ -34,7 +39,20 @@ class SignUpPageTests(TestCase):
     username = "newuser"
     email = "newuser@email.com"
 
+    # @patch("allauth.socialaccount.adapter.DefaultSocialAccountAdapter.get_provider")
+    # @patch("allauth.socialaccount.adapter.DefaultSocialAccountAdapter.get_app")
+    # def setUp(self, mock_get_app, mock_get_provider):
+
+    # mock_get_app.return_value = None
+    # mock_get_provider.return_value = None
     def setUp(self):
+        site = Site.objects.get_or_create(name="example.com", domain="example.com")[0]
+
+        social_app = SocialApp.objects.create(
+            provider="github", name="github", client_id="123", secret="1234567890"
+        )
+        social_app.sites.add(site)
+
         url = reverse("account_signup")
         self.response = self.client.get(url)
 
