@@ -46,6 +46,7 @@ class SignUpPageTests(TestCase):
     # mock_get_app.return_value = None
     # mock_get_provider.return_value = None
     def setUp(self):
+        # not sure if all this is necessary if we have social auth enabled, or just stems from my small mistake of deleting the default Site in Django Admin XDDD
         site = Site.objects.get_or_create(name="example.com", domain="example.com")[0]
 
         social_app = SocialApp.objects.create(
