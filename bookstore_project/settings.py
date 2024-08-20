@@ -164,7 +164,7 @@ DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_EMAIL_REQUIRED = True
 
-
+# This thing is already in Django admin, we can only have providers either here or in Django Admin
 # SOCIALACCOUNT_PROVIDERS = {
 #     "github": {
 #         "APP": {
@@ -173,3 +173,7 @@ SOCIALACCOUNT_EMAIL_REQUIRED = True
 #         }
 #     }
 # }
+
+# for file uploads
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
